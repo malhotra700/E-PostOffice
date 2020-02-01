@@ -1,2 +1,2 @@
-# epost
-web development lab project
+# E-PostOffice
+Web Dev Lab Project
