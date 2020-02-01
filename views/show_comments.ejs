@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href = "css/bootstrap.css" rel = "stylesheet" type = "text/css"/>
+    <link href="css.css" rel="stylesheet" type="text/css"/>
+    <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <title>Comment Box</title>
+    <style media="screen">
+      *{
+       margin:0;
+       padding:0;
+       outline: 0;
+       box-sizing: border-box;
+      }
+     body
+     {
+      -webkit-background-size:cover;
+      background-size:cover;
+      background-position:center;
+      height:90vh;
+     }
+     .A{
+        margin-left:50px;
+        overflow:hidden;
+        border:10px;
+        width:2000px;
+      }
+      .B{
+          width:120px;
+          height:120px;
+          margin:10px;
+background:#def010;
+        margin-bottom:10px;
+          dispay:inline-block;
+          float:left;
+          line-height:60px;
+        }
+        .C{
+         width:1300px;
+         height:120px;
+        margin:10px;
+background:#def010;
+         dispay:inline-block;
+         float:left;
+         text-align:center;
+         line-height:120px;
+
+       }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+    <h1>COMMENT BOX</h1>
+    <!-------Wrap------------>
+    <div id="wrap">
+    <div id="main">
+    <div class="row">
+    <div class="col-md-5">
+    <h3 class="heading">Comments and Responses</h3>
+    </div>
+    <div class="col-md-7">
+    <div id="upper_blank"></div>
+    </div>
+    </div>
+    </div>
+
+    <p>Your email address will not be published. Required fields are marked *</p>
+
+    <!------------Form Start---------->
+
+    <div id='form'>
+    <div class="row">
+    <div class="col-md-12">
+
+    <form action="comments" method="POST" id="commentform">
+
+    <div id="comment-name" class="form-row">
+    <input type = "text" placeholder = "Name (required)" name = "dname"  id = "name" >
+    </div>
+    <div id="comment-email" class="form-row">
+    <input type = "text" placeholder = "Mail (will not be published) (required)" name = "demail"  id = "email">
+    </div>
+    <div id="comment-url" class="form-row">
+    <input type = "text" placeholder = "Website" name = "url"  id = "url" >
+    </div>
+    <div id="comment-message" class="form-row">
+    <textarea name = "comment" placeholder = "Message" id = "comment" ></textarea>
+    </div>
+    <a href="#"><input type="submit" name="dsubmit" id="commentSubmit" value="Submit Comment"></a>
+    <input style="width: 30px" type="checkbox" value="1" name="subscribe" id="subscribe" checked="checked">
+    <p1><b>Notify me when new comments are added.</b></p1>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="A">
+      <div class="B">
+       <center> <h4> <%= nam %></h4></center>
+       <center> <h4>RECENT</h4> </center>
+      </div>
+      <div class="C">
+        <center><h4><%= comment %></h4></center>
+      </div>
+    </div>
+<hr/>
+    <% for(let i=comments.length+1;i>=0 ; i--) {%>
+       <div class="A">
+         <div class="B">
+          <center> <h4> <%= names[i] %></h4></center>
+          <center> <h4><%= date[i] %></h4> </center>
+         </div>
+         <div class="C">
+           <center><h4><%= comments[i] %></h4></center>
+         <form>
+           <button type="button" id="like_button" onClick="get_button_value(this.value)" name="button" style="background:blue;height:25px;width:80px;align:left;line-height:25px" value=<%= likes[i] %>>LIKE ME!</button>
+           <button type="button"  style="background:blue;height:25px;width:80px;align:left;line-height:25px;overflow:hidden" id="<%= likes[i] %>" value=<%= like[i] %>  > <%= like[i]%> </button>
+          </form>
+         </div>
+       </div>
+<hr/>
+    <%} %>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.2.2/pusher.min.js"></script>
+<script src="main.js"></script>
+  </body>
+</html>
